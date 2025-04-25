@@ -1,0 +1,22 @@
+<tr id="row-{{ param.id_param }}">
+    <td>{{ param.id_param }}</td>
+    <td>{{ param.title }}</td>
+    <td id="amount-{{ param.id_param }}">
+        <form 
+            method="POST"
+            hx-post="{% url 'parameter_update' param.id_param %}"
+            hx-target="#amount-{{ param.id_param }}"
+            hx-swap="outerHTML"
+        >
+            {% csrf_token %}
+            <input 
+                type="number" 
+                name="amount" 
+                value="{{ param.amount }}" 
+                step="0.01"
+            />
+            <button type="submit">Update</button>
+        </form>
+    </td>
+</tr>
+
